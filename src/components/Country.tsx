@@ -36,15 +36,17 @@ function Country() {
   }
 
   return (
-    <div className="bg-slate-700 h-full">
+    <div className="bg-gray-300 dark:bg-slate-700 h-full sm:px-10">
       <Link to={"/"}>
         <div className="px-5 pt-10">
-          <button className="text-white bg-slate-500 px-5">Back</button>
+          <button className="bg-gray-100 dark:text-white dark:bg-slate-500 px-5">
+            Back
+          </button>
         </div>
       </Link>
 
       {/* country info */}
-      <div className="pb-20">
+      <div className="pb-20 sm:w-3/4  md:flex md:gap-10">
         <div className="py-10 flex justify-center px-5">
           <img
             src={country[0].flags.png}
@@ -53,65 +55,84 @@ function Country() {
           ></img>
         </div>
 
-        {/* first block of details */}
-        <div className="text-white px-5">
-          <p>
-            Native name:{" "}
-            <span className="text-slate-300">{country[0].name.official}</span>
-          </p>
-          <p>
-            Population:{" "}
-            <span className="text-slate-300">{country[0].population}</span>
-          </p>
-          <p>
-            Region: <span className="text-slate-300">{country[0].region}</span>
-          </p>
-          <p>
-            Sub Region:{" "}
-            <span className="text-slate-300">{country[0].subregion}</span>
-          </p>
-          <p>
-            Capital:{" "}
-            <span className="text-slate-300">{country[0].capital}</span>
-          </p>
-        </div>
+        <div className="pt-8">
+          {/* first block of details */}
+          <div className="text-black dark:text-white px-5">
+            <p>
+              Native name:{" "}
+              <span className="text-cyan-800 dark:text-slate-300 ">
+                {country[0].name.official}
+              </span>
+            </p>
+            <p>
+              Population:{" "}
+              <span className="text-cyan-800 dark:text-slate-300">
+                {country[0].population.toLocaleString()}
+              </span>
+            </p>
+            <p>
+              Region:{" "}
+              <span className=" text-cyan-800 dark:text-slate-300">
+                {country[0].region}
+              </span>
+            </p>
+            <p>
+              Sub Region:{" "}
+              <span className="text-cyan-800 dark:text-slate-300">
+                {country[0].subregion}
+              </span>
+            </p>
+            <p>
+              Capital:{" "}
+              <span className="text-cyan-800 dark:text-slate-300">
+                {country[0].capital}
+              </span>
+            </p>
+          </div>
 
-        {/* second block of details */}
-        <div className="text-white px-5 pb-10">
-          <p>
-            Domain: <span className="text-slate-300">{country[0].tld[0]}</span>
-          </p>
-          <p>
-            Currencies:{" "}
-            <span className="text-slate-300">
-              {Object.keys(country[0]?.currencies).join(" ")}
-            </span>
-          </p>
+          {/* second block of details */}
+          <div className=" dark:text-white px-5 pb-10">
+            <p>
+              Domain:{" "}
+              <span className="text-cyan-800 dark:text-slate-300">
+                {country[0].tld[0]}
+              </span>
+            </p>
+            <p>
+              Currencies:{" "}
+              <span className="text-cyan-800 dark:text-slate-300">
+                {Object.keys(country[0]?.currencies).join(" ")}
+              </span>
+            </p>
 
-          <p>
-            Languages:{" "}
-            <span className="text-slate-300">
-              {Object.keys(country[0]?.languages).join(" ")}
-            </span>
-          </p>
-        </div>
-
-        {/* border countries block */}
-
-        <div className="text-white px-5 pb-10">
-          <p className="font-bold">Border Countries:</p>
-
-          <div className="flex gap-5 py-5">
-            {!country[0].borders && <p>No border countries to display</p>}
-            {country[0]?.borders?.map((borderCountry: string) => (
-              <p key={borderCountry} className="bg-slate-500 px-3">
-                {borderCountry}
-              </p>
-            ))}
+            <p>
+              Languages:{" "}
+              <span className="text-cyan-800 dark:text-slate-300">
+                {Object.keys(country[0]?.languages).join(" ")}
+              </span>
+            </p>
           </div>
         </div>
 
-        {/* map integration */}
+        {/* border countries block */}
+      </div>
+      <div className="dark:text-white px-5 pb-10">
+        <p className="font-bold">Border Countries:</p>
+
+        <div className="flex gap-5 py-5">
+          {!country[0].borders && <p>No border countries to display</p>}
+          {country[0]?.borders?.map((borderCountry: string) => (
+            <p
+              key={borderCountry}
+              className=" bg-gray-100 dark:bg-slate-500 px-3"
+            >
+              {borderCountry}
+            </p>
+          ))}
+        </div>
+      </div>
+      {/* map integration */}
+      <div className="md:w-full pb-14">
         <Map></Map>
       </div>
     </div>

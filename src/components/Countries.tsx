@@ -36,24 +36,19 @@ function Countries() {
     );
   }
 
-  // useEffect(() => {
-  //   console.log(region);
-  // }, [region]);
-  const focusInput = () => {};
-
   return (
-    <div className="bg-slate-700 h-full pb-32">
+    <div className="bg-gray-300 dark:bg-slate-700 h-full pb-32 sm:px-10">
       <div>
         {/* input build */}
-        <div className="flex justify-center">
-          <div className="bg-slate-500 flex items-center mt-7 p-5 w-11/12 gap-4">
-            <div onClick={focusInput}>
-              <IoIosSearch color={"white"} size={"1.5rem"} />
+        <div className="flex ml-6">
+          <div className="bg-gray-100 dark:bg-slate-500 flex  mt-7 p-5 w-11/12 gap-4">
+            <div>
+              <IoIosSearch color={"gray"} size={"1.5rem"} />
             </div>
 
             <input
               type="text"
-              className=" text-white  bg-slate-500"
+              className=" text-white bg-gray-100  dark:bg-slate-500"
               placeholder="Search for a country"
               value={input}
               onChange={(e) => {
@@ -67,13 +62,13 @@ function Countries() {
         <div>
           <select
             id="regions"
-            className="bg-slate-500  text-white text-sm ml-4 block w-1/2 p-2 mt-4"
+            className="bg-gray-100 dark:bg-slate-500 dark:text-white text-sm ml-6 block w-1/2 p-2 mt-4"
             onChange={(e) => setRegion(e.target.value)}
           >
             <option defaultValue={"Filter by"}>Filter by region</option>
             <option value="Europe">Europe</option>
             <option value="Asia">Asia</option>
-            <option value="America">America</option>
+            <option value="Americas">America</option>
             <option value="Oceania">Oceania</option>
             <option value="Africa">Africa</option>
           </select>
@@ -82,7 +77,7 @@ function Countries() {
 
       {/* displaying the countries */}
 
-      <div className="grid gap-10 lg:grid-cols-4 mt-10">
+      <div className="grid gap-10 md:grid-cols-2 mt-10 lg:grid-cols-3 xl:grid-cols-4">
         {countries
           .filter(
             (country: any) =>
@@ -91,8 +86,11 @@ function Countries() {
           )
           .map((country: any) => {
             return (
-              <article key={country.name.official} className="px-7 text-white">
-                <div className="bg-slate-500 rounded-lg">
+              <article
+                key={country.name.official}
+                className="px-7 dark:text-white"
+              >
+                <div className="bg-gray-100 dark:bg-slate-500 rounded-lg max-w-sm m-auto md:max-w-md">
                   <Link
                     to={{
                       pathname: `/${encodeURIComponent(
