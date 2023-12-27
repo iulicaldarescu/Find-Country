@@ -48,7 +48,7 @@ function Countries() {
 
             <input
               type="text"
-              className=" text-white bg-gray-100  dark:bg-slate-500"
+              className=" dark:text-white bg-gray-100 outline-none  dark:bg-slate-500"
               placeholder="Search for a country"
               value={input}
               onChange={(e) => {
